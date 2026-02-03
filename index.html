@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mvrkjrdn.xyz</title>
+  <link rel="icon" href="assets/favicon.ico">
+  <script>
+
+    (function(){
+      try{
+        const t = localStorage.getItem('site-theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+      }catch(e){}
+    })();
+  </script>
+
+  <!--CSS-->
+  <style>
+    /* ---------- Theme variables ---------- */
+    :root{
+      --bg:#0b0f14;
+      --panel:#111827;
+      --panel-2:#0f172a;
+      --accent:#22d3ee;
+      --accent-2:#a78bfa;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius:14px;
+    }
+
+    [data-theme="light"]{
+      --bg: #f7fafc;
+      --panel: #ffffff;
+      --panel-2: #f1f5f9;
+      --accent: #60a5fa;
+      --accent-2: #c4b5fd;
+      --text: #0f172a;
+      --muted: #6b7280;
+      --radius:14px;
+    }
+    [data-theme="dusk"]{
+      --bg: #120d0a;
+      --panel: #1b1410;
+      --panel-2: #261c16;
+      --accent: #f59e0b;
+      --accent-2: #e85d3f;
+      --text: #f3e9dd;
+      --muted: #c2a98f;
+      --border: #3a2a20;
+      --radius:14px;
+    }
+    [data-theme="terminal"]{
+      --bg: #050807;
+      --panel: #0b1410;
+      --panel-2: #10201a;
+      --accent: #22c55e;
+      --accent-2: #4ade80;
+      --text: #d1fae5;
+      --muted: #6ee7b7;
+      --border: #1f3d2f;
+      --radius:14px;
+    }
+    [data-theme="arctic"]{
+      --bg: #101a24;
+      --panel: #162531;
+      --panel-2: #162531;
+      --accent: #5cc8ff;
+      --accent-2: #5cc8ff;
+      --text: #eef8ff;
+      --muted: #b3d4e6;
+      --border: #2c465c;
+      --radius:14px;
+    }
+    [data-theme="amethyst"]{
+      --bg: #120b1a;
+      --panel: #1a1026;
+      --panel-2: #26163a;
+      --accent: #a855f7;
+      --accent-2: #e879f9;
+      --text: #f3e8ff;
+      --muted: #c4b5d6;
+      --border: #3a2357;
+      --radius:14px;
+    }
+    [data-theme="rain"]{
+      --bg: #76818f;
+      --panel: #596674;
+      --panel-2: #2f3942;
+      --accent: #6ba4c8;
+      --accent-2: #8fbcd9;
+      --text: #bed0e6;
+      --muted: #c0d2e7;
+      --border: #b6c4d2;
+      --radius:14px;
+    }
+    [data-theme="onyx"]{
+      --bg: #0b0b0c;
+      --panel: #121214;
+      --panel-2: #1a1a1d;
+      --accent: #5a5a5a;
+      --accent-2: #8a8a8a;
+      --text: #e6e6e6;
+      --muted: #a1a1a1;
+      --border: #242427;
+      --radius:14px;
+    }
+    [data-theme="crimson"]{
+      --bg: #120707;
+      --panel: #1b0c0c;
+      --panel-2: #2a1414;
+      --accent: #e11d48;
+      --accent-2: #fb7185;
+      --text: #f8eaea;
+      --muted: #c7a5a5;
+      --border: #3a1a1a;
+      --radius:14px;
+  }
+
+    body, .main, .sidebar, .card, .links a, .titlebar{
+      transition: background-color .22s ease, color .22s ease, border-color .22s ease;
+    }
+
+    *{ box-sizing:border-box }
+
+    /* ---------- Page base ---------- */
+    body{
+      margin:0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: radial-gradient(1200px 600px at 10% -10%, #0b1220, transparent), var(--bg);
+      color:var(--text);
+      display:grid;
+      place-items:center;
+      min-height:100vh;
+    }
+
+    /* ---------- App layout ---------- */
+    .app{
+      width:min(980px, 92vw);
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap:14px;
+    }
+
+    /* ---------- Sidebar ---------- */
+    .sidebar{
+      background:linear-gradient(180deg, var(--panel), var(--panel-2));
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,.45);
+    }
+
+    .avatar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px;
+      border-radius:10px;
+      background:var(--panel);
+      border:1px solid var(--border);
+    }
+
+    .pfp{
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      background-image: url("assets/avatar.png"), linear-gradient(135deg, var(--accent), var(--accent-2));
+      background-size: cover, 100% 100%;
+      background-position: center center, center center;
+      background-repeat: no-repeat, no-repeat;
+      border:1px solid var(--border);
+    }
+
+    .name{font-weight:700}
+    .status{font-size:12px; color:var(--muted)}
+
+    .channels{margin-top:10px}
+
+    .chan{
+      padding:8px 10px;
+      border-radius:8px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    .chan.active{
+      background:linear-gradient(90deg, var(--panel), var(--panel-2));
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    /* ---------- Main terminal panel ---------- */
+    .main{
+      background:linear-gradient(180deg, var(--panel), var(--panel-2));
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.45);
+      border:1px solid var(--border);
+    }
+
+    .titlebar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .dot{width:10px; height:10px; border-radius:50%}
+    .red{background:#ef4444}
+    .yel{background:#f59e0b}
+    .grn{background:#22c55e}
+    .tab{margin-left:auto; font-size:12px; color:var(--muted)}
+
+    .terminal{padding:16px; line-height:1.6}
+
+    .terminal{position:relative}
+    .view{
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity .28s cubic-bezier(.2,.9,.2,1), transform .28s cubic-bezier(.2,.9,.2,1);
+      pointer-events:none;
+      overflow:visible;
+    }
+    .view.active{
+      opacity:1;
+      transform:none;
+      pointer-events:auto;
+    }
+
+    /* ---------- Utility styles ---------- */
+    .prompt{color:var(--accent)}
+    .cmd{color:var(--text)}
+    .out{color:var(--muted)}
+
+    .grid{display:grid; gap:12px; margin-top:14px}
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+    }
+
+    .grid img,
+    img.card{
+      width:100%;
+      height:auto;
+      max-height:400px;
+      object-fit:cover;
+      display:block;
+      border-radius:8px;
+      cursor:zoom-in;
+    }
+
+    img.card{
+      padding:0;
+      background:transparent;
+      border:none;
+      border-radius:12px;
+    }
+
+    .disclaimer{
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+      margin-top:10px;
+      padding:8px 6px;
+      background:transparent;
+      border:none;
+    }
+
+    /* Lightbox overlay for full-size image preview */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(2,6,23,0.85);
+      z-index:9999;
+      padding:20px;
+    }
+    .lightbox.active{display:flex}
+    .lightbox img{
+      max-width:calc(100% - 40px);
+      max-height:90vh;
+      border-radius:8px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      background:#000;
+    }
+    .lightbox .close{
+      position:absolute;
+      top:18px;
+      right:18px;
+      color:var(--text);
+      background:rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:6px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .links a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--panel);
+      color:var(--text);
+      text-decoration:none;
+      margin-bottom:8px;
+    }
+
+    .links a:hover{border-color:var(--accent)}
+    .kbd{font-size:11px; color:var(--muted)}
+
+    /* Theme button styles (compact) */
+    .theme-btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--text);
+      padding:6px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .theme-btn.active{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#061017;
+      border-color:transparent;
+    }
+    .theme-card{ margin-top:14px }
+    .theme-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px }
+    .theme-grid .theme-btn{ width:100% }
+
+    /* ---------- Blog collapsibles ---------- */
+    details.blog-post{
+      margin-bottom:12px;
+    }
+
+    details.blog-post summary{
+      cursor:pointer;
+      font-weight:600;
+      color:var(--text);
+    }
+
+    details.blog-post[open] summary{
+      margin-bottom:8px;
+      color:var(--accent);
+    }
+
+    /* Blog paragraph styling */
+    .blog-post .out p{ margin:10px 0; color:var(--muted); }
+    .blog-post .out p:first-child{ margin-top:8px }
+
+    /* ---------- Mobile ---------- */
+    @media(max-width:760px){
+      .app{grid-template-columns:1fr}
+      .sidebar{order:2}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- APP -->
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="avatar">
+        <div class="pfp"></div>
+        <div>
+          <div class="name">Mvrk Jrdn</div>
+          <div class="status">Self Proclaimed "Goat"</div>
+        </div>
+      </div>
+
+      <!-- Channel list -->
+      <div class="channels">
+        <div class="chan active" data-view="about"># about</div>
+        <div class="chan" data-view="links"># links</div>
+        <div class="chan" data-view="art"># art</div>
+        <div class="chan" data-view="refs"># ref-sheets</div>
+        <div class="chan" data-view="blog"># blog</div>
+        <div class="chan" data-view="send"># send</div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="titlebar">
+        <div class="dot red"></div>
+        <div class="dot yel"></div>
+        <div class="dot grn"></div>
+        <div class="tab">bash - mvrkjrdn@web</div>
+      </div>
+
+      <section class="terminal">
+
+        <!-- ABOUT -->
+        <div class="view" id="about">
+          <div><span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span> about_me</div>
+          <div class="out">Hello My Name is Mavrick! Though you can call me Mvrk.</div>
+          <div class="out">I am a jack of all trades but master of none.</div>
+          <div class="out">I code, draw, do music, write, voice act, dnd, recently started learning blender</div>
+          <div class="out">and more!</div>
+          <div class="out">If you wanna get in touch with me join the discord server, or follow my bsky</div>
+          <div class="card out theme-card" aria-hidden="false">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div style="font-weight:600">> Theme (Change how my Site looks)</div>
+              <div class="theme-grid" style="width:360px">
+                <button id="theme-dark" class="theme-btn">Ghost</button>
+                <button id="theme-light" class="theme-btn">Flashbang</button>
+                <button id="theme-dusk" class="theme-btn">Dusk</button>
+                <button id="theme-terminal" class="theme-btn">Terminal</button>
+                <button id="theme-arctic" class="theme-btn">Artic</button>
+                <button id="theme-amethyst" class="theme-btn">Amethyst</button>
+                <button id="theme-rain" class="theme-btn">Rain</button>
+                <button id="theme-onyx" class="theme-btn">Onyx</button>
+                <button id="theme-crimson" class="theme-btn">Crimson</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINKS -->
+        <div class="view" id="links" hidden>
+          <div class="card out">Click My Links Bro</div>
+          <div class="card out">Socials:</div>
+          <div class="card links">
+            <a href="https://discord.gg/FqwBgPq5by" target="_blank" rel="noopener">Discord <span class="kbd">/join</span></a>
+            <a href="https://bsky.app/profile/mvrkjrdn.xyz" target="_blank" rel="noopener">Bsky <span class="kbd">/social</span></a>
+          </div>
+          <div class="card out">OCs & Lore:</div>
+          <div class="card links">
+            <a href="https://docs.google.com/document/d/1WpsDQuR5317NC157uRLHrDVhxjUMpS4V_U06pxkvrZc/edit?usp=sharing" target="_blank" rel="noopener">Eldritch God OCU <span class="kbd">/Lore</span></a>
+            <a href="https://docs.google.com/document/d/16CTGSkPseitg0x_oy14OMkl3JGNxqRdLCOA1GhEplQQ/edit?usp=sharing" target="_blank" rel="noopener">Glorpian Species Doc <span class="kbd">/Glorp</span></a>
+          </div>
+        </div>
+
+        <!-- ART -->
+        <div class="view" id="art" hidden>
+          <div class="card out">Check This Art Out that I made !!</div>
+          <div id="art-grid" class="grid" style="grid-template-columns:repeat(2,1fr)"></div>
+          <div class="disclaimer">All artwork and character reference sheets are © Mavrick Jordan. Unauthorized use, reposting, editing, tracing, or commercial use is prohibited without written permission.</div>
+        </div>
+
+        <!-- REF SHEETS -->
+        <div class="view" id="refs" hidden>
+          <div class="card out">All the ref sheets for my OCs I wish to share will be down below !!</div>
+          <div id="refs-grid" class="grid" style="grid-template-columns:repeat(3,1fr)"></div>
+          <div class="disclaimer">All artwork and character reference sheets are © Mavrick Jordan. Unauthorized use, reposting, editing, tracing, or commercial use is prohibited without written permission.</div>
+        </div>
+
+        <!-- BLOG -->
+        <div class="view" id="blog" hidden>
+          <div class="card out">You'll see all my "blogs" so to speak here. check em out!</div>
+          <div id="blog-posts"></div>
+        </div>
+
+        <!-- SEND -->
+        <div class="view" id="send" hidden>
+          <div class="card out">Send Me some stuff !! there's a good chance I'll post about em on my Bsky</div>
+          <div class="card">
+            <form action="https://formsubmit.co/da44f45be0c2ffe2a810419a145f229d" method="POST" enctype="multipart/form-data">
+              <input type="text" name="name" placeholder="Your name" required /><br/><br/>
+              <textarea name="message" placeholder="Your message"></textarea><br/><br/>
+              <input type="file" name="attachment" accept="image/*" /><br/><br/>
+              <button type="submit">Send It!</button>
+            </form>
+          </div>
+        </div>
+
+      </section>
+
+      <!--          JAVASCRIPT          -->
+      <script>
+        if (location.protocol === 'file:') {
+          const about = document.getElementById('about');
+          if (about) {
+            const hint = document.createElement('div');
+            hint.className = 'card out';
+            hint.style.marginTop = '12px';
+            hint.textContent = 'Note: To load posts and images this site must be served over HTTP. Run `python -m http.server` in this folder and open http://localhost:8000/';
+            about.appendChild(hint);
+          }
+          console.warn('Opened via file:// — fetch requests may fail. Serve files with a local HTTP server.');
+        }
+        const chans = document.querySelectorAll('.chan[data-view]');
+        const views = document.querySelectorAll('.view');
+
+        function showView(view, chan){
+          const current = document.querySelector('.view.active');
+          if (current === view) {
+            if (chan) {
+              chans.forEach(c => c.classList.remove('active'));
+              chan.classList.add('active');
+            }
+            return;
+          }
+          const container = document.querySelector('.terminal');
+
+          if (current && container){
+            const h = current.getBoundingClientRect().height;
+            container.style.height = Math.ceil(h) + 'px';
+          }
+
+          if (current) {
+            current.classList.remove('active');
+            const onOldEnd = (e) => {
+              if (e.propertyName === 'opacity'){
+                current.hidden = true;
+                current.removeEventListener('transitionend', onOldEnd);
+              }
+            };
+            current.addEventListener('transitionend', onOldEnd);
+          }
+
+          view.hidden = false;
+          requestAnimationFrame(() => view.classList.add('active'));
+
+          const onNewEnd = (e) => {
+            if (e.propertyName === 'opacity'){
+              if (container) container.style.height = '';
+              view.removeEventListener('transitionend', onNewEnd);
+            }
+          };
+          view.addEventListener('transitionend', onNewEnd);
+
+          if (chan) {
+            chans.forEach(c => c.classList.remove('active'));
+            chan.classList.add('active');
+          }
+        }
+
+        chans.forEach(chan => {
+          chan.addEventListener('click', () => {
+            const id = chan.dataset.view;
+            const view = document.getElementById(id);
+            if (!view) return;
+            showView(view, chan);
+          });
+        });
+
+        (function(){
+          const initial = document.querySelector('.view:not([hidden])') || document.getElementById('about');
+          if (initial){ initial.hidden = false; initial.classList.add('active'); }
+        })();
+
+        /* -------- Blog formatting helpers -------- */
+        function escapeHTML(str){
+          return str.replace(/[&<>\"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[s] || s));
+        }
+
+        function formatBlogText(text){
+          if (!text) return '';
+          text = text.replace(/\r\n/g,'\n');
+
+          const paras = text.split(/\n{2,}/).map(p => p.trim()).filter(p => p.length>0);
+
+          return paras.map(p => {
+            const html = escapeHTML(p).replace(/\n/g,'<br>');
+            return `<p>${html}</p>`;
+          }).join('\n');
+        }
+
+        /* -------- Blog loader -------- */
+        fetch('blog/index.json')
+          .then(r => r.json())
+          .then(posts => {
+            const wrap = document.getElementById('blog-posts');
+            if (!wrap) return;
+
+            posts.forEach(file => {
+              fetch('blog/' + file)
+                .then(r => r.text())
+                .then(text => {
+                  const details = document.createElement('details');
+                  details.className = 'card blog-post';
+
+                  const summary = document.createElement('summary');
+
+                  let title = file.replace(/\.txt$/i,'');
+                  const lines = text.replace(/\r\n/g,'\n').split('\n');
+                  for (let i=0;i<lines.length;i++){
+                    const ln = lines[i].trim();
+                    if (!ln) continue;
+                    const m = ln.match(/^#{1,6}\s+(.*)$/);
+                    if (m){ title = m[1].trim();
+                      lines.splice(i,1);
+                    }
+                    break;
+                  }
+                  summary.textContent = title;
+
+                  const body = document.createElement('div');
+                  body.className = 'out';
+
+                  const contentText = lines.join('\n').trim();
+                  body.innerHTML = formatBlogText(contentText);
+
+                  details.appendChild(summary);
+                  details.appendChild(body);
+                  wrap.appendChild(details);
+                })
+                .catch(err => console.error('Failed to load blog post:', file, err));
+            });
+          })
+          .catch(err => console.error('Failed to load blog/index.json', err));
+
+        /* -------- Art loader -------- */
+        fetch('art/art.json')
+          .then(r => r.json())
+          .then(images => {
+            const grid = document.getElementById('art-grid');
+            if (!grid) return;
+
+            images.forEach(src => {
+              const img = document.createElement('img');
+              img.src = 'art/' + src;
+              img.loading = 'lazy';
+              img.className = 'card';
+              grid.appendChild(img);
+              img.addEventListener('click', () => openLightbox(img.src));
+            });
+          })
+          .catch(err => console.error('Failed to load art/art.json', err));
+        /* -------- Ref sheet loader -------- */
+        fetch('refs/refs.json')
+          .then(r => r.json())
+          .then(images => {
+            const grid = document.getElementById('refs-grid');
+            if (!grid) return;
+
+            images.forEach(src => {
+              const img = document.createElement('img');
+              img.src = 'refs/' + src;
+              img.loading = 'lazy';
+              img.className = 'card';
+              grid.appendChild(img);
+              img.addEventListener('click', () => openLightbox(img.src));
+            });
+          })
+          .catch(err => console.error('Failed to load refs/refs.json', err));
+
+        function createLightbox(){
+          if (document.querySelector('.lightbox')) return;
+          const lb = document.createElement('div');
+          lb.className = 'lightbox';
+
+          const img = document.createElement('img');
+          lb.appendChild(img);
+
+          const close = document.createElement('button');
+          close.className = 'close';
+          close.textContent = 'Close';
+          lb.appendChild(close);
+
+          close.addEventListener('click', closeLightbox);
+          lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+
+          document.body.appendChild(lb);
+        }
+
+        function openLightbox(src){
+          createLightbox();
+          const lb = document.querySelector('.lightbox');
+          const img = lb.querySelector('img');
+          img.src = src;
+          lb.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(){
+          const lb = document.querySelector('.lightbox');
+          if (!lb) return;
+          lb.classList.remove('active');
+          document.body.style.overflow = '';
+          const img = lb.querySelector('img');
+          setTimeout(() => { if (img) img.src = ''; }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+
+        function setTheme(name){
+          try{ document.documentElement.setAttribute('data-theme', name); localStorage.setItem('site-theme', name); }catch(e){}
+          updateThemeButtons();
+        }
+
+        function updateThemeButtons(){
+          const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+          const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson'];
+          ids.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const themeName = id.replace('theme-','');
+            el.classList.toggle('active', cur === themeName);
+          });
+        }
+
+        (function(){
+          const mapping = {
+            'theme-dark':'dark',
+            'theme-light':'light',
+            'theme-dusk':'dusk',
+            'theme-terminal':'terminal',
+            'theme-arctic':'arctic',
+            'theme-amethyst':'amethyst',
+            'theme-rain':'rain',
+            'theme-onyx':'onyx',
+            'theme-crimson':'crimson'
+          };
+          Object.keys(mapping).forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('click', () => setTheme(mapping[id]));
+          });
+          updateThemeButtons();
+        })();
+      </script>
+    </main>
+  </div>
+</body>
+</html>
