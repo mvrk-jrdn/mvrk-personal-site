@@ -1,0 +1,31 @@
+2/3/2026
+
+Yeah !!
+as the title suggests I made a website finally. it's been on my to do list for quite some time and it's been mostly finished. I just hate CSS and I don't like using it. most of my Time learning Computer Science in High School (which was most of High School) was spent learning skills for game design not web design. and I did learn some Web Design but that was back in the 7th grade and I haven't touched it since except when I open up the inspect element.
+so this was a very unique experience to me. it was fun however. it doesn't look exactly like I wanted it too but I like it a lot. and I'll probably be making updates to it as time goes on, obviously. but it's pretty neat. 
+my goal was to have something that looked kind of like a Terminal- with that kind of aesthetic. but with the structure and look of Discord so it's familiar and usable. cause lets be honest seldom anyone on the internet is using a terminal unless you're running linux. (Hi 2B)
+My Original Design for this site was actually straight up just a Terminal. and you had to type in little commands to actually get the pages to show up.
+> Help would bring up a help page showing you all the commands
+> Art X would show you my art, where X was a number showing you the art that cooresponded with that number. 
+> Log X would show you blog posts. where X was the number associated with the blog.
+and more commands like that. 
+but I thankfully realized how inefficient that would be especially for someones first impression of me and/or my website.
+so I scrapped that and now I'm using what you're seeing now. (assuming I don't update this site to look drastically different in the future and you're reading this at a later date)
+
+I suppose I can walk through the layout of the website and everything. as well as share with you my vision for the future of this site.
+
+"# about" is just a standard about me. it's kind of boring right now and I want to improve it at a later date but for now it's perfectly fine. OH! and you can change the theme here. in case you don't like these default colors (I like em a lot)
+"# links" has links to a discord server me and my friends own and run. a lot of really cool creative and talented people there. and it's just a nice place where people of allllll kinds of varrying interests can come, hang out, and talk about whatever their interests are. From Anime, to Games, to Art, to just day to day life. and then I have my Blue Sky account as well. I'll see about adding more accounts but I really only use Discord and BlueSky. and then there's Lore Documents for two OCUs. The Eldritch God one is fully owned by me and I spent a great deal of time writing the doc out. you should read it! it's pretty cool. and the Glorpian one has a guide to Glorpian Anatomy and is meant so people can easily make Glorpian OCs. I wanna talk about them at a later date but not today.
+"# art" has all the art I wish to share. the oldest peice on the site right now is from... October 27th 2024... wow that's hella old. so I guess you can take a look and see how I've improved over the years.
+"# ref-sheets" has all sorts of reference images of my OCs and my Sona. I was going to add more but I don't like the quality of a lot of my Ref Sheets. and even some of them currently posted now will be remade. not now but in the future.
+"# blog" well that's what you're reading now! Hi!
+"# send" I wanted a feature like strawpage has where people can send me messages and images. and I found a really cool project called "FormSubmit" that made this process SOOO much easier than originally planned. Draw My OC and send it to me on there !! I would love to see it. And while it is anonymous as in, you can enter whatever name you want- I'm more likely to post about it on BlueSky if I know who it is. so keep that in mind.
+
+as for the future there's really only two things I wanna work on. but as of now they aren't important.
+I want to have a search feature where you can keyword search  the blogs and then it'll only show blogs that have those words in it. so that way if you're trying to find something specific that I said it'll be easier.
+and I also wanna have some kind of text based adventure game on the site. but as an easter egg. I'll announce when I've added it but not how to find it. you'll have to do that yourself. (or open the inspect element and search around in there. but that's boooring)
+
+And that's about it... idk if blogs will be this long in the future I kind of just talk and yap and say things. I have a lot of cool yap sessions I've done in The Discord Server about random topics and Maybe I can forward some of them to this site. I like talking about just anything and everything and having a space to do that. 
+
+that's about it. not much else to see from this site. I hope you're all having a wonderful day. take care now. drink some water. and file your taxes. it's that time of the year. unless it's not for you. in which case ignore me.
+Bye now !!
