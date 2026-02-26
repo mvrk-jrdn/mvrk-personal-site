@@ -334,6 +334,9 @@
     .links a:hover{border-color:var(--accent)}
     .kbd{font-size:11px; color:var(--muted)}
 
+    /* playlist embed styling */
+    .playlist-embed{width:100%;border-radius:12px;}
+
     /* Theme button styles (compact) */
     .theme-btn{
       background:transparent;
@@ -343,6 +346,71 @@
       border-radius:8px;
       cursor:pointer;
       font-size:13px;
+    }
+
+    /* Send view form elements */
+    #send form input[type="text"],
+    #send form textarea,
+    #send form input[type="file"] {
+      width:100%;
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:8px;
+      color:var(--text);
+      padding:8px;
+      font-size:14px;
+      box-sizing: border-box;
+      margin-bottom:12px;
+    }
+
+    /* file input button styling */
+    #send form input[type="file"] {
+      background:var(--panel);
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+
+    #send form input[type="file"]::-webkit-file-upload-button,
+    #send form input[type="file"]::file-selector-button,
+    #send form input[type="file"]::-ms-browse {
+      background:var(--panel) !important;
+      border:1px solid var(--border) !important;
+      color:var(--text) !important;
+      padding:6px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:13px;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+    #send form input[type="file"]::-webkit-file-upload-button:hover,
+    #send form input[type="file"]::file-selector-button:hover,
+    #send form input[type="file"]::-ms-browse:hover {
+      border-color:var(--accent) !important;
+    }
+
+    #send form textarea {
+      min-height:100px;
+      resize:vertical;
+    }
+
+    #send form input:focus,
+    #send form textarea:focus {
+      outline:none;
+      border-color:var(--accent);
+    }
+
+    #send form input::placeholder,
+    #send form textarea::placeholder {
+      color:var(--muted);
+    }
+
+    #send form button {
+      /* use theme-btn styling plus full width for better touch targets */
+      width:auto;
+    }
+    #send form button.theme-btn {
+      margin-top:8px;
     }
     .theme-btn.active{
       background:linear-gradient(90deg,var(--accent),var(--accent-2));
@@ -354,17 +422,21 @@
     .theme-grid .theme-btn{ width:100% }
 
     /* ---------- Blog collapsibles ---------- */
-    details.blog-post{
-      margin-bottom:12px;
+    details.blog-post,
+    details.playlist{
+      /* smaller gap between items to keep lists tighter */
+      margin-bottom:0px;
     }
 
-    details.blog-post summary{
+    details.blog-post summary,
+    details.playlist summary{
       cursor:pointer;
       font-weight:600;
       color:var(--text);
     }
 
-    details.blog-post[open] summary{
+    details.blog-post[open] summary,
+    details.playlist[open] summary{
       margin-bottom:8px;
       color:var(--accent);
     }
@@ -372,6 +444,9 @@
     /* Blog paragraph styling */
     .blog-post .out p{ margin:10px 0; color:var(--muted); }
     .blog-post .out p:first-child{ margin-top:8px }
+
+    /* playlist content spacing */
+    details.playlist .out{ margin:10px 0; }
 
     /* ---------- Mobile ---------- */
     @media(max-width:760px){
@@ -402,6 +477,7 @@
         <div class="chan" data-view="art"># art</div>
         <div class="chan" data-view="refs"># ref-sheets</div>
         <div class="chan" data-view="blog"># blog</div>
+        <div class="chan" data-view="playlist"># playlist</div>
         <div class="chan" data-view="send"># send</div>
       </div>
     </aside>
@@ -426,6 +502,8 @@
           <div class="out">I code, draw, do music, write, voice act, dnd, recently started learning blender</div>
           <div class="out">and more!</div>
           <div class="out">If you wanna get in touch with me join the discord server, or follow my bsky</div>
+          <div class="out">----------------------------------------------------------------------------</div>
+          <div class="out">Changes to site: 2/26/2026 Updated the "#send" channel to look better. Added a "#playlist" channel. Added new Ref Sheet and Art. Also added a new Blog post (and I suppose I added a changelog as well)</div>
           <div class="card out theme-card" aria-hidden="false">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
               <div style="font-weight:600">> Theme (Change how my Site looks)</div>
@@ -480,15 +558,53 @@
           <div id="blog-posts"></div>
         </div>
 
+        <!-- PLAYLIST -->
+        <div class="view" id="playlist" hidden>
+          <div class="card out">Here's some songs I like! check em out! - and also some songs my friends recommend</div>
+          <div id="playlist-container">
+            <details class="card playlist">
+              <summary>Mixed playlist</summary>
+              <div class="out">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/12bYYQaLqHliSXvRIYlq8G?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/65X2koe1LhDgQmRkNdJFv9?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0UVwVTPmwbNW0PzFZraOzl?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5eJ4rMnA8CgEKFAPWllJiM?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7AJA9HBfpcZbLvVSTSdT7K?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4kVxStqN7DeoZje5aidAn3?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3o44C8C4OXcnTGWlURAJ6n?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6jbYpRPTEFl1HFKHk1IC0m?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2BHj31ufdEqVK5CkYDp9mA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0bF1RyQkzRpD4ULuqD2KRe?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6VoIBz0VhCyz7OdEoRYDiA?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0epjWMv4x9sQav6crcfORC?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6BJHsLiE47Sk0wQkuppqhr?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1ONC00cKNdFgKiATMtcxEc?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/43iIQbw5hx986dUEZbr3eN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4BnrGx9tWNF8aiXl1UhDBa?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2TaXZSY2ztQ2e6zZOa4n2x?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0JJP0IS4w0fJx01EcrfkDe?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2DAZakhs7RRCoM6pvLpUEz?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </details>
+            <!-- new playlist -->
+            <details class="card playlist">
+              <summary>Music Friends Recommend</summary>
+              <div class="out">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4AtV4RBkdbEGvSrGFY7qUW?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+              </div>
+            </details>
+          </div>
+        </div>
+
         <!-- SEND -->
         <div class="view" id="send" hidden>
           <div class="card out">Send Me some stuff !! there's a good chance I'll post about em on my Bsky</div>
           <div class="card">
             <form action="https://formsubmit.co/send@mvrkjrdn.xyz" method="POST" enctype="multipart/form-data">
-              <input type="text" name="name" placeholder="Your name" required /><br/><br/>
-              <textarea name="message" placeholder="Your message"></textarea><br/><br/>
-              <input type="file" name="attachment" accept="image/*" /><br/><br/>
-              <button type="submit">Send It!</button>
+              <input type="text" name="name" placeholder="Your name" required />
+              <textarea name="message" placeholder="Your message"></textarea>
+              <input type="file" name="attachment" accept="image/*" />
+              <button type="submit" class="theme-btn">Send It!</button>
             </form>
           </div>
         </div>
@@ -592,6 +708,13 @@
           .then(posts => {
             const wrap = document.getElementById('blog-posts');
             if (!wrap) return;
+
+            // ensure posts are sorted numerically by leading number (highest first)
+            posts.sort((a,b) => {
+              const numa = parseInt(a.match(/^\d+/)?.[0]||0,10);
+              const numb = parseInt(b.match(/^\d+/)?.[0]||0,10);
+              return numb - numa; // descending
+            });
 
             posts.forEach(file => {
               fetch('blog/' + file)
