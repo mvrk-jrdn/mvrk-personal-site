@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>you're not supposed to be here...</title>
+
+<link rel="icon" href="assets/favicon.ico">
+
+<script>
+(function(){
+  try{
+    const t = localStorage.getItem('site-theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  }catch(e){}
+})();
+</script>
+
+<link rel="stylesheet" href="styles.css?v=2">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+
+  <aside class="sidebar">
+    <div class="avatar">
+      <div class="pfp"></div>
+      <div>
+        <div class="name">Mvrk Jrdn</div>
+        <div class="status">Self Proclaimed "????"</div>
+      </div>
+    </div>
+
+
+<div class="channels">
+  <div class="chan active"># error</div>
+  <div class="chan"># 404</div>
+  <div class="chan"># not-found</div>
+  <div class="chan"># lost</div>
+  <div class="chan"># gone</div>
+  <div class="chan"># missing</div>
+  <div class="chan"># something-went-wrong</div>
+</div>
+
+
+  </aside>
+
+  <!-- Main panel -->
+
+  <main class="main">
+
+
+<div class="titlebar">
+  <div class="dot red"></div>
+  <div class="dot red"></div>
+  <div class="dot red"></div>
+  <div class="tab">bash - mvrkjrdn@web</div>
+</div>
+
+<section class="terminal">
+
+  <div>
+    <span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span> :( 
+  </div>
+
+  <div class="out">Error: page not found.</div>
+  <div class="out">The page you tried to access does not exist.</div>
+  <div class="out">Do not look for it.</div>
+  <div class="out">Do not seek it.</div>
+  <div class="out">Do not track it.</div>
+  <div class="out">Do not find it.</div>
+  <div class="out">It is not here.</div>
+  <div class="out">------------------------------------------------------------</div>
+
+  <div class="card out">
+    <a href="/" class="theme-btn">Return to homepage</a>
+  </div>
+
+</section>
+
+
+  </main>
+
+</div>
+
+</body>
+</html>
