@@ -251,3 +251,21 @@ function updateThemeButtons(){
   });
   updateThemeButtons();
 })();
+
+(function(){
+
+  const theme = localStorage.getItem('site-theme');
+  const terminal = document.getElementById('terminal-404'); // only exists on 404 page
+  if (!terminal) return;
+
+  if (theme === 'tuah') {
+    const existingCard = terminal.querySelector('.card.out');
+    if (existingCard) {
+      const button = document.createElement('a');
+      button.href = '/noka.html';
+      button.className = 'theme-btn';
+      button.textContent = 'Come Home';
+      existingCard.appendChild(button);
+    }
+  }
+})();

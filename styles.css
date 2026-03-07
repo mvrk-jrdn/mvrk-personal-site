@@ -186,6 +186,17 @@ body{
   border:1px solid var(--border);
 }
 
+.noka-pfp{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background-image: url("assets/nokapfp.png"), linear-gradient(135deg, var(--accent), var(--accent-2));
+  background-size: cover, 100% 100%;
+  background-position: center center, center center;
+  background-repeat: no-repeat, no-repeat;
+  border:1px solid var(--border);
+}
+
 .name{font-weight:700}
 .status{font-size:12px; color:var(--muted)}
 
