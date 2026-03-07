@@ -14,8 +14,8 @@
   --bg: #f7fafc;
   --panel: #ffffff;
   --panel-2: #f1f5f9;
-  --accent: #60a5fa;
-  --accent-2: #c4b5fd;
+  --accent: #c4b5fd;
+  --accent-2: #60a5fa;
   --text: #0f172a;
   --muted: #6b7280;
   --radius:14px;
@@ -463,4 +463,5 @@ details.playlist .out{ margin:10px 0; }
 @media(max-width:760px){
   .app{grid-template-columns:1fr}
   .sidebar{order:2}
+
 }
