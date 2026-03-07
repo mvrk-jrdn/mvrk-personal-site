@@ -141,7 +141,7 @@ body, .main, .sidebar, .card, .links a, .titlebar{
 body{
   margin:0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  background: radial-gradient(1200px 600px at 10% -10%, #0b1220, transparent), var(--bg);
+  background:var(--bg);
   color:var(--text);
   display:grid;
   place-items:center;
@@ -162,6 +162,7 @@ body{
   border-radius:var(--radius);
   padding:14px;
   box-shadow:0 10px 25px rgba(0,0,0,.45);
+  border:1px solid var(--border);
 }
 
 .avatar{
@@ -218,13 +219,14 @@ body{
   gap:10px;
   padding:10px 12px;
   border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 
 .dot{width:10px; height:10px; border-radius:50%}
 .red{background:#ef4444}
 .yel{background:#f59e0b}
 .grn{background:#22c55e}
-.tab{margin-left:auto; font-size:12px; color:var(--muted)}
+.tab{margin-left:auto; font-size:12px; color:var(--bg)}
 
 .terminal{padding:16px; line-height:1.6}
 
