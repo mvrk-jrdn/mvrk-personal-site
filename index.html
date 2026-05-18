@@ -30,6 +30,7 @@
   </script>
 
   <link rel="stylesheet" href="styles.css?v=2">
+  
 </head>
 <body>
   <!-- APP -->
@@ -70,17 +71,16 @@
         <div class="view" id="about">
           <div><span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span> about_me</div>
           <div class="out">Hello My Name is Mavrick! Though you can call me Mvrk.</div>
-          <div class="out">I Got My account back !! no longer hacked !!</div>
           <div class="out">I am a jack of all trades but master of none.</div>
           <div class="out">I code, draw, do music, write, voice act, dnd, recently started learning blender</div>
           <div class="out">and more!</div>
+          <div class="out">----------------------------------------------------------------------------</div>
           <div class="out">If you wanna get in touch with me join the discord server, or follow my bsky</div>
           <div class="out">----------------------------------------------------------------------------</div>
-          <div class="out">Changes to site: 3/6/2026 | Changed up some visual stuff- mainly just the bg, outlines on the side card, color on the top thing, added the <span class="prompt">mvrkjrdn@web</span> thing to all the channels. and also 1 New Ref sheet and 1 New Art.</div>
           <div class="card out theme-card" aria-hidden="false">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
               <div style="font-weight:600">> Theme (Change how my Site looks)</div>
-              <div class="theme-grid" style="width:480px;max-width:100%">
+              <div class="theme-grid" style="width:600px;max-width:100%">
                 <button id="theme-dark" class="theme-btn">Ghost</button>
                 <button id="theme-light" class="theme-btn">Flashbang</button>
                 <button id="theme-dusk" class="theme-btn">Dusk</button>
@@ -93,6 +93,7 @@
                 <button id="theme-tuah" class="theme-btn">TUAH</button>
                 <button id="theme-verdant" class="theme-btn">Verdant</button>
                 <button id="theme-contrast" class="theme-btn">High Contrast</button>
+                <button id="theme-golden" class="theme-btn">Golden</button> 
               </div>
             </div>
           </div>
@@ -141,7 +142,7 @@
         <!-- PLAYLIST -->
         <div class="view" id="playlist" hidden>
           <div><span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span> music_playlist</div>
-          <div class="card out">Here's some songs I like! check em out! - and also some songs my friends recommend</div>
+          <div class="card out">Here's some songs I like! check em out!</div>
           <div id="playlist-container">
             <details class="card playlist">
               <summary>Mixed playlist</summary>
@@ -168,12 +169,12 @@
               </div>
             </details>
             <!-- new playlist -->
-            <details class="card playlist">
+            <!-- <details class="card playlist">
               <summary>Music Friends Recommend</summary>
               <div class="out">
                 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4AtV4RBkdbEGvSrGFY7qUW?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
               </div>
-            </details>
+            </details> -->
           </div>
         </div>
 
