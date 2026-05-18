@@ -220,7 +220,7 @@ function setTheme(name){
 
 function updateThemeButtons(){
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson','theme-tuah','theme-verdant','theme-contrast', 'theme-golden'];
+  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson','theme-tuah','theme-verdant','theme-contrast'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -242,8 +242,7 @@ function updateThemeButtons(){
     'theme-crimson':'crimson',
     'theme-tuah':'tuah',
     'theme-verdant':'verdant',
-    'theme-contrast':'contrast',
-    'theme-golden':'golden'
+    'theme-contrast':'contrast'
   };
   Object.keys(mapping).forEach(id => {
     const el = document.getElementById(id);
@@ -251,4 +250,22 @@ function updateThemeButtons(){
     el.addEventListener('click', () => setTheme(mapping[id]));
   });
   updateThemeButtons();
+})();
+
+(function(){
+
+  const theme = localStorage.getItem('site-theme');
+  const terminal = document.getElementById('terminal-404'); // only exists on 404 page
+  if (!terminal) return;
+
+  if (theme === 'tuah') {
+    const existingCard = terminal.querySelector('.card.out');
+    if (existingCard) {
+      const button = document.createElement('a');
+      button.href = '/noka.html';
+      button.className = 'theme-btn';
+      button.textContent = 'Come Home';
+      existingCard.appendChild(button);
+    }
+  }
 })();

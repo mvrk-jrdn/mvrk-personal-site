@@ -14,8 +14,8 @@
   --bg: #f7fafc;
   --panel: #ffffff;
   --panel-2: #f1f5f9;
-  --accent: #60a5fa;
-  --accent-2: #c4b5fd;
+  --accent: #c4b5fd;
+  --accent-2: #60a5fa;
   --text: #0f172a;
   --muted: #6b7280;
   --radius:14px;
@@ -130,17 +130,6 @@
   --border: #ffffff;
   --radius: 4px;
 }
-[data-theme="golden"]{
-  --bg:#151515;
-  --panel:#1c1c1c;
-  --panel-2:#232323;
-  --accent:#e1bd5a;
-  --accent-2:#e1bd5a;
-  --text:#b3936c;
-  --muted:#524c3c;
-  --border:#ead497;
-  --radius:14px;
-}
 
 body, .main, .sidebar, .card, .links a, .titlebar{
   transition: background-color .22s ease, color .22s ease, border-color .22s ease;
@@ -202,17 +191,6 @@ body{
   height:44px;
   border-radius:50%;
   background-image: url("assets/nokapfp.png"), linear-gradient(135deg, var(--accent), var(--accent-2));
-  background-size: cover, 100% 100%;
-  background-position: center center, center center;
-  background-repeat: no-repeat, no-repeat;
-  border:1px solid var(--border);
-}
-
-.space-pfp{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background-image: url("assets/space.png"), linear-gradient(135deg, var(--accent), var(--accent-2));
   background-size: cover, 100% 100%;
   background-position: center center, center center;
   background-repeat: no-repeat, no-repeat;
@@ -318,6 +296,7 @@ img.card{
   background:transparent;
   border:none;
 }
+
 /* Lightbox overlay for full-size image preview */
 .lightbox{
   position:fixed;
@@ -407,7 +386,7 @@ img.card{
 #send form input[type="file"]::-ms-browse {
   background:var(--panel) !important;
   border:1px solid var(--border) !important;
-  color:var(--text);
+  color:var(--text) !important;
   padding:6px 8px;
   border-radius:8px;
   cursor:pointer;
@@ -484,4 +463,5 @@ details.playlist .out{ margin:10px 0; }
 @media(max-width:760px){
   .app{grid-template-columns:1fr}
   .sidebar{order:2}
+
 }
