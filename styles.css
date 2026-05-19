@@ -130,6 +130,50 @@
   --border: #ffffff;
   --radius: 4px;
 }
+[data-theme="golden"]{
+  --bg:#0c0c0c;
+  --panel:#1c1c1c;
+  --panel-2:#161616;
+  --accent:#e1bd5a;
+  --accent-2:#e1bd5a;
+  --text:#ead497;
+  --muted:#b4a57d;
+  --border:#ead497;
+  --radius:14px;
+}
+[data-theme="desire"]{
+  --bg: #11001c;
+  --panel: #451926;
+  --panel-2: #481d4b;
+  --accent: #26f7fd;
+  --accent-2: #ff46a2;
+  --text: #e8e8ff;
+  --muted: #a2a1cf;
+  --border: #ffffff;
+  --radius:14px;
+}
+[data-theme="synthwave"]{
+  --bg: #140a1f;
+  --panel: #221133;
+  --panel-2: #2d1744;
+  --accent: #ff4fd8;
+  --accent-2: #ff9e3d;
+  --text: #ffeaf7;
+  --muted: #cba6d8;
+  --border: #5c2d79;
+  --radius:14px;
+}
+[data-theme="blackrose"]{
+  --bg: #0a090c;
+  --panel: #141217;
+  --panel-2: #1d1822;
+  --accent: #15081f;     
+  --accent-2: #7ba2b8;   
+  --text: #f1ebf5;
+  --muted: #a79aad;
+  --border: #35293d;
+  --radius:14px;
+}
 
 body, .main, .sidebar, .card, .links a, .titlebar{
   transition: background-color .22s ease, color .22s ease, border-color .22s ease;
