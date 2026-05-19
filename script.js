@@ -220,7 +220,7 @@ function setTheme(name){
 
 function updateThemeButtons(){
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson','theme-tuah','theme-verdant','theme-contrast'];
+  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson','theme-tuah','theme-verdant','theme-contrast','theme-golden','theme-desire', 'theme-synthwave', 'theme-blackrose'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -242,7 +242,11 @@ function updateThemeButtons(){
     'theme-crimson':'crimson',
     'theme-tuah':'tuah',
     'theme-verdant':'verdant',
-    'theme-contrast':'contrast'
+    'theme-contrast':'contrast',
+    'theme-golden':'golden',
+    'theme-desire':'desire',
+    'theme-synthwave':'synthwave',
+    'theme-blackrose':'blackrose',
   };
   Object.keys(mapping).forEach(id => {
     const el = document.getElementById(id);
