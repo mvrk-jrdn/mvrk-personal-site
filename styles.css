@@ -110,13 +110,13 @@
 }
 [data-theme="verdant"]{
   --bg: #0e1410;
-  --panel: #162019;
-  --panel-2: #1d2b22;
-  --accent: #4ade80;
-  --accent-2: #a3e635;
-  --text: #e6f5ec;
-  --muted: #9fb8a7;
-  --border: #2f4a3a;
+  --panel: #16201f;
+  --panel-2: #1d2b29;
+  --accent: #2CBFA2;
+  --accent-2: #7BFFCC;
+  --text: #e8e6f5;
+  --muted: #9fa6b8;
+  --border: #FFA036;
   --radius:14px;
 }
 [data-theme="contrast"]{
