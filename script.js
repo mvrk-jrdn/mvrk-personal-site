@@ -220,7 +220,7 @@ function setTheme(name){
 
 function updateThemeButtons(){
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-onyx','theme-crimson','theme-tuah','theme-verdant','theme-contrast','theme-golden','theme-desire', 'theme-synthwave', 'theme-blackrose'];
+  const ids = ['theme-dark','theme-light','theme-dusk','theme-terminal','theme-arctic','theme-amethyst','theme-rain','theme-bitter','theme-crimson','theme-tuah','theme-verdant','theme-contrast','theme-golden','theme-desire', 'theme-synthwave', 'theme-blackrose'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -238,7 +238,7 @@ function updateThemeButtons(){
     'theme-arctic':'arctic',
     'theme-amethyst':'amethyst',
     'theme-rain':'rain',
-    'theme-onyx':'onyx',
+    'theme-bitter':'bitter',
     'theme-crimson':'crimson',
     'theme-tuah':'tuah',
     'theme-verdant':'verdant',
