@@ -1,0 +1,249 @@
+{
+  "categories": [
+    {
+      "title": "Eldritch Gods",
+      "characters": [
+        {
+          "name": "Mava'rk",
+          "image": "Mava'rk.png",
+          "description": "Eldritch God of Nyctophobia and Somnophobia."
+        },
+        {
+          "name": "Aruna",
+          "image": "aruna.png",
+          "description": "Eldritch Goddess of Necrophobia and Ombrophobia."
+        },
+        {
+          "name": "Neoma",
+          "image": "Neoma.png",
+          "description": "Eldritch Goddess of Astrophobia and Oneirophobia."
+        },
+        {
+          "name": "Greely",
+          "image": "Greely.png",
+          "description": "Eldritch God of Ataxophobia and Ommetaphobia."
+        },
+        {
+          "name": "Kanashii",
+          "image": "Kanashii.png",
+          "description": "Eldritch God of Multiversophobia."
+        },
+        {
+          "name": "Iz'ela",
+          "image": "Iz'ela.png",
+          "description": "Eldritch Goddess of Monophobia and Fennecaphobia."
+        },
+        {
+          "name": "Waffelz",
+          "image": "waffelz.png",
+          "description": "Eldritch God of Thalassophobia."
+        },
+        {
+          "name": "Nova",
+          "image": "Nova.png",
+          "description": "Eldritch Goddess of Traumatophobia and Polesmosophobia."
+        },
+        {
+          "name": "Chrono",
+          "image": "chrono.png",
+          "description": "Eldritch God of Chronophobia."
+        },
+        {
+          "name": "Derkhan",
+          "image": "derkhan.png",
+          "description": "Eldritch God of Submechanophobia."
+        },
+        {
+          "name": "Sek'taros",
+          "image": "Sektaros.png",
+          "description": "Eldritch God of Ammophobia and Enchlophobia."
+        },
+        {
+          "name": "Mynos",
+          "image": "mynos.png",
+          "description": "Eldritch God of Selenophobia and Noctiphobia."
+        },
+        {
+          "name": "Chilya",
+          "image": "Chilya.png",
+          "description": "Eldritch Goddess of Frigophobia."
+        },
+        {
+          "name": "Vehlmir",
+          "image": "Vehlmir.png",
+          "description": "Eldritch God of Nosophobia."
+        },
+        {
+          "name": "Acridith",
+          "image": "Acridith.png",
+          "description": "Eldritch Goddess of Hemophobia."
+        },
+        {
+          "name": "Malik",
+          "image": "Malik.png",
+          "description": "Eldritch God of Angelophobia."
+        },
+        {
+          "name": "Lycantos",
+          "image": "Lycantos.png",
+          "description": "Eldritch God of Lupophobia. (Gray Wolves)"
+        },
+        {
+          "name": "Rufayn",
+          "image": "Rufayn.png",
+          "description": "Eldritch Goddess of Lupophobia. (Red Wolves)"
+        },
+        {
+          "name": "Lyscordic",
+          "image": "Lyscordic.png",
+          "description": "Eldritch God of Phasmophobia and Mycophobia."
+        },
+        {
+          "name": "Venus",
+          "image": "Venus.png",
+          "description": "Eldritch Goddess of Dendrophobia."
+        },
+        {
+          "name": "Kalyx",
+          "image": "Kalyx.png",
+          "description": "Eldritch Entity of Inaptimor."
+        }
+      ]
+    },
+    {
+      "title": "Glorpians",
+      "characters": [
+        {
+          "name": "Tuah",
+          "image": "3_001_tuah.png",
+          "description": "Mascot of Tge Hoyove,rs"
+        },
+        {
+          "name": "Aiko",
+          "image": "3_002_aiko.png",
+          "description": "Lead Scientist behind the Brainrot Pandemic"
+        },
+        {
+          "name": "Noka",
+          "image": "3_003_noka.png",
+          "description": "Coral Farmer and Biologist."
+        },
+        {
+          "name": "Uni",
+          "image": "3_004_uni.png",
+          "description": "A Robotic Glorpian made by Tuah"
+        },
+        {
+          "name": "Klip",
+          "image": "3_005_Klip Skourgefrost Driftglorpi.png",
+          "description": "A Glorpian who left their old life behind to kick back"
+        },
+        {
+          "name": "Syli Petalspin Glorpilumen",
+          "image": "3_006_Syli Petalspin Glorpilumen.png",
+          "description": "An Idol Glorpian."
+        },
+        {
+          "name": "Mire Bindnote Glorpinull",
+          "image": "3_007_Mire Bindnote Glorpinull.png",
+          "description": "A Reclusive Librarian Glorpian."
+        },
+        {
+          "name": "Enyo Tinkerlock Driftglorpi",
+          "image": "3_008_Enyo Tinkerlock Driftglorpi Redesign.png",
+          "description": "A Professional Boxer Glorpian."
+        },
+        {
+          "name": "Ossy Nerissal Saelglorpinereth",
+          "image": "3_009_Ossy Nerissal Saelglorpinereth.png",
+          "description": "Glorpian Construction Worker and Engineer."
+        },
+        {
+          "name": "Thir Marginwake Glorpidex",
+          "image": "3_010_Thir Marginwake Glorpidex.png",
+          "description": "Glorpian Prince who is no longer in power."
+        },
+        {
+          "name": "Koro Stonewhorl Glorpibloom",
+          "image": "3_011_Koro Stonewhorl Glorpibloom.png",
+          "description": "Bodyguard and best friend of Luma"
+        },
+        {
+          "name": "Luma Moonvelour Glorpibloom",
+          "image": "3_012_Luma Moonvelour Glorpibloom.png",
+          "description": "Owner of the Facility Tuah, Noka, Aiko, and Ossy work at."
+        },
+        {
+          "name": "Iris",
+          "image": "3_012_iris.png",
+          "description": "An Albino Glorpian."
+        }
+      ]
+    },
+    {
+      "title": "Dungeons and Dragons",
+      "characters": [
+        {
+          "name": "Revere",
+          "image": "2_1_revere.png",
+          "description": "A Moon Elf Hexblade Warlock."
+        },
+        {
+          "name": "Acheron",
+          "image": "2_2_acheron.png",
+          "description": "A Sun Elf Fathomless Warlock."
+        },
+        {
+          "name": "Macbeth",
+          "image": "2_3_macbeth.png",
+          "description": "A Ghost seeking Ancient Relics"
+        },
+        {
+          "name": "Nereus",
+          "image": "2_4_Nereus.png",
+          "description": "Captian of the Tidebreaker Pirates and Philantropist"
+        },
+        {
+          "name": "Seraphina",
+          "image": "2_5_Seraphina.png",
+          "description": "Tiefling Adopted by a family of forgotten Tieflings."
+        },
+        {
+          "name": "Quartz",
+          "image": "2_6_Quartz.png",
+          "description": "The Quartz Knight of Qeset."
+        }
+      ]
+    },
+    {
+      "title": "Etc",
+      "characters": [
+        {
+          "name": "Mvrk",
+          "image": "0_mvrk.png",
+          "description": "My Sona"
+        },
+        {
+          "name": "Daemonshank",
+          "image": "4_1_daemonshank ref.png",
+          "description": "Phighting OC based on the Daemonshank Back accessory."
+        },
+        {
+          "name": "Hook",
+          "image": "4_1_hook.png",
+          "description": "Phighting OC based on the black iron grappling hook gear."
+        },
+        {
+          "name": "Soul Man",
+          "image": "SoulManRef.png",
+          "description": "Mega Man OC"
+        },
+        {
+          "name": "Strata Man",
+          "image": "Strata Man.png",
+          "description": "Mega Man OC"
+        }
+      ]
+    }
+  ]
+}

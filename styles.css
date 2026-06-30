@@ -509,3 +509,63 @@ details.playlist .out{ margin:10px 0; }
   .sidebar{order:2}
 
 }
+/* ---------- Ref Sheets ---------- */
+
+.ref-category{
+    margin:16px 0;
+}
+
+.ref-category summary{
+    cursor:pointer;
+    font-weight:600;
+    color:var(--text);
+    font-size:18px;
+}
+
+.ref-category[open] summary{
+    color:var(--accent);
+    margin-bottom:12px;
+}
+
+.refs-category-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    align-items:stretch;
+}
+
+.ref-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    padding:0;
+    overflow:hidden;
+}
+
+.ref-name{
+    margin:0;
+    padding:12px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2));
+    color:var(--panel-2);
+    font-size:18px;
+    font-weight:700;
+    border-bottom:1px solid var(--border);
+    text-align:center;
+}
+
+.ref-card img{
+    width:100%;
+    height:auto;
+    display:block;
+    cursor:zoom-in;
+    border-bottom:1px solid var(--border);
+    max-height:none;
+    object-fit:contain;
+}
+
+.ref-description{
+    margin:0;
+    padding:12px;
+    line-height:1.5;
+    flex-grow:1;
+}

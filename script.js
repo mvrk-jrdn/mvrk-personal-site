@@ -159,20 +159,67 @@ fetch('art/art.json')
 /* -------- Ref sheet loader -------- */
 fetch('refs/refs.json')
   .then(r => r.json())
-  .then(images => {
-    const grid = document.getElementById('refs-grid');
-    if (!grid) return;
+  .then(data => {
+    const container = document.getElementById('refs-grid');
+    if (!container) return;
 
-    images.forEach(src => {
-      const img = document.createElement('img');
-      img.src = 'refs/' + src;
-      img.loading = 'lazy';
-      img.className = 'card';
-      grid.appendChild(img);
-      img.addEventListener('click', () => openLightbox(img.src));
+    container.innerHTML = "";
+
+    data.categories.forEach(category => {
+
+      // Create collapsible section
+      const details = document.createElement("details");
+      details.className = "card ref-category";
+      details.open = false;
+
+      const summary = document.createElement("summary");
+      summary.textContent = category.title;
+      details.appendChild(summary);
+
+      // Create grid inside the category
+      const grid = document.createElement("div");
+      grid.className = "grid refs-category-grid";
+      grid.style.gridTemplateColumns = "repeat(2,1fr)";
+      grid.style.marginTop = "12px";
+
+      category.characters.forEach(character => {
+
+        // Whole card
+        const card = document.createElement("div");
+        card.className = "card ref-card";
+
+        // Image
+        const img = document.createElement("img");
+        img.src = "refs/" + character.image;
+        img.loading = "lazy";
+        img.className = "card";
+
+        img.addEventListener("click", () => {
+          openLightbox(img.src);
+        });
+
+        // Name
+        const name = document.createElement("h3");
+        name.className = "ref-name";
+        name.textContent = character.name;
+
+        // Description
+        const desc = document.createElement("div");
+        desc.className = "out ref-description";
+        desc.textContent = character.description || "";
+        
+        card.appendChild(name);
+        card.appendChild(img);
+        card.appendChild(desc);
+
+        grid.appendChild(card);
+      });
+
+      details.appendChild(grid);
+      container.appendChild(details);
     });
   })
-  .catch(err => console.error('Failed to load refs/refs.json', err));
+  .catch(err => console.error("Failed to load refs/refs.json", err));
 
 function createLightbox(){
   if (document.querySelector('.lightbox')) return;
