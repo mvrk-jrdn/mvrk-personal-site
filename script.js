@@ -40,7 +40,9 @@ function showView(view, chan){
   }
 
   view.hidden = false;
-  requestAnimationFrame(() => view.classList.add('active'));
+  void view.offsetHeight;
+  view.classList.add('active');
+
 
   const onNewEnd = (e) => {
     if (e.propertyName === 'opacity'){
