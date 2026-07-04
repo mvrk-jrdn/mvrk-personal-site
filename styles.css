@@ -569,3 +569,98 @@ details.playlist .out{ margin:10px 0; }
     line-height:1.5;
     flex-grow:1;
 }
+/* ===========================
+   Palette Generator
+=========================== */
+
+.palette-controls{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+
+}
+
+.palette-controls input{
+    flex:1;
+    background:var(--panel-2);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:10px;
+    font:inherit;
+
+}
+
+.palette-controls input:focus{
+    outline:none;
+    border-color:var(--accent);
+
+}
+
+/* 3 columns x 2 rows */
+.palette-grid{
+    margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(2,90px);
+    gap:8px;
+
+}
+
+.palette-color{
+    position:relative;
+    border-radius:10px;
+    border:1px solid var(--border);
+    cursor:pointer;
+    transition:
+        transform .18s ease,
+        filter .18s ease;
+    overflow:hidden;
+}
+
+.palette-color:hover{
+    transform:scale(1.03);
+    filter:brightness(1.08);
+}
+
+/* Overlay text */
+
+.palette-color::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--panel-2);
+    color:var(--text);
+    font-weight:bold;
+    font-size:18px;
+    opacity:0;
+    transition:opacity .2s ease;
+    pointer-events:none;
+
+}
+
+/* Shown after clicking */
+
+.palette-color.copied::after{
+    content:"Copied!";
+    opacity:1;
+}
+
+#palette-output{
+    width:100%;
+    margin-top:15px;
+    min-height:140px;
+    resize:none;
+    background:var(--panel-2);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px;
+    font-family:inherit;
+}
+#palette-output:focus{
+    outline:none;
+}

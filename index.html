@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://mvrkjrdn.xyz/">
   <meta property="og:title" content="Mvrk's Site.">
   <meta property="og:description" content="Just a website I made to share my art, blog posts, and whatever else I feel like sharing.">
-  <meta property="og:image" content="https://mvrkjrdn.xyz/embed-v2.png">
+  <meta property="og:image" content="https://mvrkjrdn.xyz/embed.png">
   <meta property="og:site_name" content="mvrkjrdn.xyz">
 
   <!-- Twitter Card -->
@@ -51,6 +51,7 @@
         <div class="chan" data-view="art"># art</div>
         <div class="chan" data-view="refs"># ref-sheets</div>
         <div class="chan" data-view="blog"># blog</div>
+        <div class="chan" data-view="palette"># palette</div>
         <div class="chan" data-view="playlist"># playlist</div>
         <div class="chan" data-view="send"># send</div>
       </div>
@@ -109,7 +110,6 @@
             <a href="https://discord.gg/FqwBgPq5by" target="_blank" rel="noopener">Discord <span class="kbd">/join</span></a>
             <a href="https://bsky.app/profile/mvrkjrdn.xyz" target="_blank" rel="noopener">Bsky <span class="kbd">/social</span></a>
             <a href="https://github.com/mvrk-jrdn" target="_blank" rel="noopener">Github <span class="kbd">/repo</span></a>
-            <a href="https://artfight.net/~MvrkJrdn" target="_blank" rel="noopener">Art Fight <span class="kbd">/art</span></a>
           </div>
           <div class="card links">
             <div class="out">OCs & Lore:</div>
@@ -139,6 +139,49 @@
           <div><span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span> blog_posts</div>
           <div class="card out">You'll see all my "blogs" so to speak here. check em out!</div>
           <div id="blog-posts"></div>
+        </div>
+
+        <!-- PALETTE -->
+        <div class="view" id="palette" hidden>
+          <div>
+            <span class="prompt">mvrkjrdn@web</span>:<span class="cmd">~$</span>
+            generate_palette
+          </div>
+
+          <div class="card">
+            <div class="out">Generate a 6-color palette for art! (example: #39a78e)</div>
+
+            <div class="palette-controls">
+              <input
+                id="palette-hex"
+                type="text"
+                placeholder="#39a78e (optional)"
+                maxlength="7"
+              >
+              <button
+                class="theme-btn"
+                id="generatePalette">
+                Generate
+              </button>
+            </div>
+
+            <div class="palette-grid" id="palette-preview">
+              <div class="palette-color"></div>
+              <div class="palette-color"></div>
+              <div class="palette-color"></div>
+              <div class="palette-color"></div>
+              <div class="palette-color"></div>
+              <div class="palette-color"></div>
+            </div>
+
+            <textarea
+              id="palette-output"
+              readonly
+              spellcheck="false"
+            ></textarea>
+            <div class="disclaimer">If you wanna save this palette all you have to do is remember the first color! the rest of the colors will always be the same every time!</div>
+            <div class="disclaimer">These palettes are algorithm-generated and meant as inspiration, not a rule. Use it as a starting point, and feel free to adjust or ignore it entirely when creating your art.</div>
+          </div>
         </div>
 
         <!-- PLAYLIST -->
@@ -198,5 +241,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="palette.js"></script>
 </body>
 </html>
