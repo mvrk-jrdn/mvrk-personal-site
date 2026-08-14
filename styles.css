@@ -166,9 +166,9 @@
 [data-theme="blackrose"]{
   --bg: #0a090c;
   --panel: #141217;
-  --panel-2: #1d1822;
-  --accent: #15081f;     
-  --accent-2: #7ba2b8;   
+  --panel-2: #1d1822;     
+  --accent: #7ba2b8;
+  --accent-2: #15081f;   
   --text: #f1ebf5;
   --muted: #a79aad;
   --border: #35293d;
@@ -602,7 +602,6 @@ details.playlist .out{ margin:10px 0; }
     margin-top:15px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(2,90px);
     gap:8px;
 
 }
@@ -642,6 +641,64 @@ details.playlist .out{ margin:10px 0; }
 
 }
 
+/* Palette cards */
+
+.palette-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+
+    border-radius:10px;
+    border:1px solid var(--border);
+}
+
+
+/* Role title */
+
+.palette-name{
+    padding:8px;
+    text-align:center;
+    font-weight:700;
+    font-size:14px;
+
+    background:var(--accent);
+
+    color:var(--bg);
+
+    border-bottom:1px solid var(--border);
+
+    opacity:0;
+    transform:translateY(-100%);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:10;
+
+    pointer-events:none;
+}
+
+
+/* Color itself */
+
+.palette-card .palette-color{
+    height:90px;
+    border-radius:0;
+    border:none;
+}
+
+.palette-card:hover .palette-name{
+    opacity:1;
+    transform:translateY(0);
+}
+
 /* Shown after clicking */
 
 .palette-color.copied::after{
@@ -663,4 +720,140 @@ details.playlist .out{ margin:10px 0; }
 }
 #palette-output:focus{
     outline:none;
+}
+
+.palette-card.copied-active .palette-name{
+    opacity:0;
+    transform:translateY(-100%);
+    pointer-events:none;
+}
+
+/* =========================================================
+   HOMESTUCK-STYLE PESTERLOG
+   ========================================================= */
+.hs-card {
+  margin-top: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+}
+/* ---------- Pesterlog title ---------- */
+.hs-title {
+  padding: 9px 12px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+
+  letter-spacing: .2px;
+}
+
+.hs-title::first-letter {
+  color: var(--accent);
+}
+
+/* ---------- Image ---------- */
+
+.hs-image {
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  cursor: zoom-in;
+}
+
+/* ---------- Pesterlog ---------- */
+
+.hs-log {
+  padding: 14px 16px 18px;
+
+  background: var(--bg);
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Don't let normal terminal paragraph styling affect the log */
+
+.hs-log p {
+  margin: 0 0 9px;
+}
+
+/* ---------- System/meta messages ---------- */
+
+.hs-log .meta {
+  margin: 4px 0 14px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1px;
+}
+
+/* ---------- Character colors ---------- */
+
+.hs-log .mb {
+  color: #486ccc;
+  font-weight: 600;
+}
+
+.hs-log .po {
+  color: #7e57c2;
+  font-weight: 600;
+}
+
+/* ---------- Slightly stronger speaker distinction ---------- */
+
+.hs-log p.mb::first-line,
+.hs-log p.po::first-line {
+  font-weight: 700;
+}
+
+/* ---------- Hover interaction ---------- */
+
+.hs-log p.mb,
+.hs-log p.po {
+  transition: filter .12s ease;
+}
+
+.hs-log p.mb:hover,
+.hs-log p.po:hover {
+  filter: brightness(1.15);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:760px) {
+  .hs-log {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .hs-title {
+    font-size: 13px;
+  }
+
+  .hs-image {
+    max-height: 350px;
+  }
 }

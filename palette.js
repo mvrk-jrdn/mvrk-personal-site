@@ -1,4 +1,6 @@
-
+// ==============================
+// Seeded RNG
+// ==============================
 function rng(seed) {
   let t = seed % 2147483647;
   if (t <= 0) t += 2147483646;
@@ -10,7 +12,7 @@ function rng(seed) {
 }
 
 // ==============================
-// Safe seed generator (NO NaN EVER)
+// Safe seed generator
 // ==============================
 function makeSeed(r, g, b) {
   r = Number.isFinite(r) ? r : 0;
@@ -122,46 +124,175 @@ function oklchToRgb(L, C, H) {
   };
 }
 
+function colorDistance(a, b) {
+  const dL = a.L - b.L;
+  const dC = a.C - b.C;
+
+  let dH = Math.abs(a.H - b.H);
+  dH = Math.min(dH, 360 - dH) / 180;
+
+  return Math.sqrt(
+    dL * dL +
+    dC * dC +
+    dH * dH
+  );
+}
+
 // ==============================
 // Palette Generator (FIXED)
 // ==============================
 function generatePalette(r, g, b) {
+
   const seed = makeSeed(r, g, b);
   const rand = rng(seed);
 
   const base = rgbToOklch(r, g, b);
 
-  let palette = [];
+  const palette = [rgbToHex(r, g, b)];
+  const generated = [base];
 
-  // ALWAYS force first color to be the input color
-  palette.push(rgbToHex(r, g, b));
+  const roles = [
 
-  for (let i = 1; i < 6; i++) {
-    // controlled hue relationships instead of drift
-    let hueOffset;
+    // Shadow
+    { h: 30,   l: -0.28, c: 0.80 },
 
-    if (i === 1) hueOffset = 0;        // same family
-    if (i === 2) hueOffset = 25;       // analogous
-    if (i === 3) hueOffset = 140;      // contrast
-    if (i === 4) hueOffset = 200;      // deeper complement
-    if (i === 5) hueOffset = 320;      // accent shift
+    // Highlight
+    { h: -30,   l: +0.22, c: 0.85 },
 
-    let H = (base.H + hueOffset + (rand() - 0.5) * 10) % 360;
+    // Secondary
+    { h: 90,  l: +0.10, c: 1.00 },
 
-    // keep lightness anchored to base instead of drifting away
-    let L = base.L + (i - 2.5) * 0.06 + (rand() - 0.5) * 0.03;
+    // Complement
+    { h: 180, l: +0.10, c: 1.10 },
 
-    // controlled chroma variation
-    let C = base.C * (1 + (rand() - 0.5) * 0.4);
+    // Accent
+    { h: 300, l: +0.12, c: 1.35 }
 
-    L = Math.max(0, Math.min(1, L));
-    C = Math.max(0, C);
+  ];
+
+
+  for (const role of roles) {
+
+    //------------------------------------
+    // Generate initial color
+    //------------------------------------
+
+    let targetL = base.L + role.l;
+
+    // Prevent clipping
+    if (base.L > 0.82 && role.l > 0)
+      targetL = base.L - 0.12;
+
+    if (base.L < 0.18 && role.l < 0)
+      targetL = base.L + 0.12;
+
+
+    let L = targetL + (rand() - 0.5) * 0.04;
+
+    let H = (
+      base.H +
+      role.h +
+      (rand() - 0.5) * 10 +
+      360
+    ) % 360;
+
+
+    let C = base.C * role.c;
+    C *= 0.9 + rand() * 0.2;
+
+
+    //------------------------------------
+    // Push colors away if too similar
+    //------------------------------------
+
+    let attempts = 0;
+
+    while (attempts < 20) {
+
+      const candidate = {
+        L,
+        C,
+        H
+      };
+
+
+      let closest = Infinity;
+      let closestColor = null;
+
+
+      for (const previous of generated) {
+
+        const distance = colorDistance(previous, candidate);
+
+        if (distance < closest) {
+          closest = distance;
+          closestColor = previous;
+        }
+
+      }
+
+
+      // Far enough away!
+      if (closest >= 0.16)
+        break;
+
+
+      //------------------------------------
+      // Move away from closest color
+      //------------------------------------
+
+      const hueDirection =
+        H >= closestColor.H ? 1 : -1;
+
+
+      const lightDirection =
+        L >= closestColor.L ? 1 : -1;
+
+
+      H += hueDirection * (15 + attempts * 5);
+
+      L += lightDirection * 0.025;
+
+      C += (C >= closestColor.C ? 0.02 : -0.02);
+
+
+      H = (H + 360) % 360;
+
+      L = Math.max(0.05, Math.min(0.95, L));
+
+      C = Math.max(0, C);
+
+
+      attempts++;
+
+    }
+
+
+    //------------------------------------
+    // Add final color
+    //------------------------------------
+
+    const finalColor = {
+      L,
+      C,
+      H
+    };
+
+
+    generated.push(finalColor);
+
 
     const rgb = oklchToRgb(L, C, H);
-    palette.push(rgbToHex(rgb.r, rgb.g, rgb.b));
+
+    palette.push(
+      rgbToHex(rgb.r, rgb.g, rgb.b)
+    );
+
   }
 
+
   return palette;
+
 }
 
 // ==============================
@@ -186,23 +317,43 @@ function generate() {
   const container = document.getElementById("palette-preview");
   container.innerHTML = "";
 
-  palette.forEach(hex => {
-    const div = document.createElement("div");
-    div.className = "palette-color";
-    div.style.background = hex;
-    div.title = hex;
-    div.addEventListener("click", () => {
-      navigator.clipboard.writeText(hex);
-      div.classList.add("copied");
-      clearTimeout(div.copyTimeout);
-      div.copyTimeout = setTimeout(() => {
-        div.classList.remove("copied");
-      }, 500);
-  });
-    container.appendChild(div);
-  });
+const roles = [
+  "Base",
+  "Shade",
+  "Tint",
+  "Secondary",
+  "Complementary",
+  "Accent"
+];
 
-  // text output (Krita friendly)
+palette.forEach((hex, index) => {
+    const card = document.createElement("div");
+    card.className = "palette-card";
+    const name = document.createElement("div");
+    name.className = "palette-name";
+    name.textContent = roles[index];
+    const color = document.createElement("div");
+    color.className = "palette-color";
+    color.style.background = hex;
+    color.title = hex;
+    color.addEventListener("click", () => {
+      navigator.clipboard.writeText(hex);
+
+      card.classList.add("copied-active");
+      color.classList.add("copied");
+
+      clearTimeout(color.copyTimeout);
+
+      color.copyTimeout = setTimeout(() => {
+        color.classList.remove("copied");
+        card.classList.remove("copied-active");
+    }, 500);
+});
+    card.appendChild(name);
+    card.appendChild(color);
+    container.appendChild(card);
+});
+
   document.getElementById("palette-output").textContent =
     document.getElementById("palette-output").value =
     palette
