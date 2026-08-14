@@ -803,8 +803,6 @@ details.playlist .out{ margin:10px 0; }
   line-height: 1.5;
 }
 
-/* Don't let normal terminal paragraph styling affect the log */
-
 .hs-log p {
   margin: 0 0 9px;
 }
@@ -831,25 +829,6 @@ details.playlist .out{ margin:10px 0; }
 .hs-log .po {
   color: #7e57c2;
   font-weight: 600;
-}
-
-/* ---------- Slightly stronger speaker distinction ---------- */
-
-.hs-log p.mb::first-line,
-.hs-log p.po::first-line {
-  font-weight: 700;
-}
-
-/* ---------- Hover interaction ---------- */
-
-.hs-log p.mb,
-.hs-log p.po {
-  transition: filter .12s ease;
-}
-
-.hs-log p.mb:hover,
-.hs-log p.po:hover {
-  filter: brightness(1.15);
 }
 
 /* ---------- Mobile ---------- */
