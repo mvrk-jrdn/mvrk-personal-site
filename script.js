@@ -43,7 +43,6 @@ function showView(view, chan){
   void view.offsetHeight;
   view.classList.add('active');
 
-
   const onNewEnd = (e) => {
     if (e.propertyName === 'opacity'){
       if (container) container.style.height = '';
@@ -321,4 +320,239 @@ function updateThemeButtons(){
       existingCard.appendChild(button);
     }
   }
+})();
+
+// ==========================================
+// TUAH KONAMI CODE
+// ==========================================
+
+(() => {
+    const konamiCode = [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "KeyB",
+        "KeyA",
+        "Enter"
+    ];
+
+    let konamiProgress = 0;
+
+    document.addEventListener("keydown", (event) => {
+        if (event.code === konamiCode[konamiProgress]) {
+            konamiProgress++;
+
+            if (konamiProgress === konamiCode.length) {
+                spawnTuah();
+                konamiProgress = 0;
+            }
+        } else {
+            // If they press something wrong, start over.
+            konamiProgress = 0;
+        }
+    });
+
+    function spawnTuah() {
+        const tuah = document.createElement("img");
+
+        tuah.src = "/assets/tuah.png";
+        tuah.alt = "";
+        tuah.className = "tuah-bubble";
+
+        // ==========================================
+        // INITIAL POSITION
+        // ==========================================
+
+        const size = 100;
+
+        const aspectRatio = 468 / 337;
+        const height = size * aspectRatio;
+
+        const x = Math.random() * (window.innerWidth - size);
+        const y = Math.random() * (window.innerHeight - height);
+
+        tuah.style.width = `${size}px`;
+        tuah.style.height = "auto";
+        tuah.style.left = `${x}px`;
+        tuah.style.top = `${y}px`;
+
+        document.body.appendChild(tuah);
+
+        // ==========================================
+        // MOVEMENT
+        // ==========================================
+
+        // Normal slow "bubble" velocity
+        let vx = (Math.random() - 0.5) * 0.5;
+        let vy = (Math.random() - 0.5) * 0.5;
+
+        // Remember the original floating velocity
+        const normalVX = vx;
+        const normalVY = vy;
+
+        // 0 = normal floating
+        // 1 = currently recovering from being flung
+        let damping = 0;
+
+        // ==========================================
+        // ROTATION
+        // ==========================================
+
+        // Slight initial lean
+        let rotation = (Math.random() - 0.5) * 20;
+
+        // How quickly Tuah is currently spinning
+        let rotationVelocity = 0;
+
+        // The angle Tuah prefers to rest at
+        let restingRotation = (Math.random() - 0.5) * 16;
+
+        let lastTime = performance.now();
+
+        // ==========================================
+        // ANIMATION
+        // ==========================================
+
+        function animate(currentTime) {
+            const delta = Math.min(
+                (currentTime - lastTime) / 16.67,
+                2
+            );
+
+            lastTime = currentTime;
+
+            let currentX = parseFloat(tuah.style.left);
+            let currentY = parseFloat(tuah.style.top);
+
+            // ==========================================
+            // MOVEMENT
+            // ==========================================
+
+            currentX += vx * delta;
+            currentY += vy * delta;
+
+            // ==========================================
+            // BOUNCE OFF EDGES
+            // ==========================================
+
+            if (currentX <= 0) {
+                currentX = 0;
+                vx = Math.abs(vx);
+            }
+
+            if (currentX >= window.innerWidth - size) {
+                currentX = window.innerWidth - size;
+                vx = -Math.abs(vx);
+            }
+
+            if (currentY <= 0) {
+                currentY = 0;
+                vy = Math.abs(vy);
+            }
+
+            if (currentY >= window.innerHeight - size) {
+                currentY = window.innerHeight - size;
+                vy = -Math.abs(vy);
+            }
+
+            // ==========================================
+            // FLING DAMPING
+            // ==========================================
+
+            if (damping > 0) {
+                vx *= Math.pow(0.97, delta);
+                vy *= Math.pow(0.97, delta);
+
+                // Once we're slow enough, return to
+                // normal floating behavior.
+                if (Math.abs(vx) < 1 && Math.abs(vy) < 1) {
+                    damping = 0;
+                }
+            }
+
+            // ==========================================
+            // RETURN TO NORMAL FLOATING
+            // ==========================================
+
+            if (damping === 0) {
+                vx += (normalVX - vx) * 0.01 * delta;
+                vy += (normalVY - vy) * 0.01 * delta;
+            }
+
+            // ==========================================
+            // ROTATION
+            // ==========================================
+
+            const speed = Math.sqrt(vx * vx + vy * vy);
+
+            // While being flung, faster movement creates
+            // more rotational energy.
+            if (damping > 0) {
+                rotationVelocity += speed * 0.015 * delta;
+            }
+
+            // Apply rotation
+            rotation += rotationVelocity * delta;
+
+            // Gradually stop spinning
+            rotationVelocity *= Math.pow(0.97, delta);
+
+            // When floating normally, gently return toward
+            // the preferred resting angle.
+            if (damping === 0) {
+                let rotationDifference = restingRotation - rotation;
+
+                // Prevent weirdly long rotations around 360°
+                if (rotationDifference > 180) {
+                    rotationDifference -= 360;
+                }
+
+                if (rotationDifference < -180) {
+                    rotationDifference += 360;
+                }
+
+                rotation += rotationDifference * 0.015 * delta;
+            }
+
+            // Keep the rotation number manageable
+            if (rotation > 360) rotation -= 360;
+            if (rotation < -360) rotation += 360;
+
+            // ==========================================
+            // APPLY POSITION + ROTATION
+            // ==========================================
+
+            tuah.style.left = `${currentX}px`;
+            tuah.style.top = `${currentY}px`;
+            tuah.style.transform = `rotate(${rotation}deg)`;
+
+            requestAnimationFrame(animate);
+        }
+
+        // ==========================================
+        // CLICK = YEET
+        // ==========================================
+
+        tuah.addEventListener("click", () => {
+            const angle = Math.random() * Math.PI * 2;
+
+            // FAST initial speed
+            const speed = 20 + Math.random() * 15;
+
+            vx = Math.cos(angle) * speed;
+            vy = Math.sin(angle) * speed;
+
+            // Give Tuah a random spin
+            rotationVelocity = (Math.random() - 0.5) * 25;
+
+            damping = 1;
+        });
+
+        requestAnimationFrame(animate);
+    }
 })();

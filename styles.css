@@ -763,6 +763,10 @@ details.playlist .out{ margin:10px 0; }
   letter-spacing: .2px;
 }
 
+.hs-title::first-letter {
+  color: var(--accent);
+}
+
 /* ---------- Image ---------- */
 
 .hs-image {
@@ -799,6 +803,8 @@ details.playlist .out{ margin:10px 0; }
   line-height: 1.5;
 }
 
+/* Don't let normal terminal paragraph styling affect the log */
+
 .hs-log p {
   margin: 0 0 9px;
 }
@@ -827,6 +833,25 @@ details.playlist .out{ margin:10px 0; }
   font-weight: 600;
 }
 
+/* ---------- Slightly stronger speaker distinction ---------- */
+
+.hs-log p.mb::first-line,
+.hs-log p.po::first-line {
+  font-weight: 700;
+}
+
+/* ---------- Hover interaction ---------- */
+
+.hs-log p.mb,
+.hs-log p.po {
+  transition: filter .12s ease;
+}
+
+.hs-log p.mb:hover,
+.hs-log p.po:hover {
+  filter: brightness(1.15);
+}
+
 /* ---------- Mobile ---------- */
 
 @media (max-width:760px) {
@@ -842,4 +867,18 @@ details.playlist .out{ margin:10px 0; }
   .hs-image {
     max-height: 350px;
   }
+}
+
+.tuah-bubble {
+    position: fixed;
+    z-index: 99999;
+
+    cursor: pointer;
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    /* Tell the browser that position and rotation
+       are going to change constantly. */
+    will-change: left, top, transform;
 }
