@@ -104,6 +104,16 @@
           "description": "Eldritch Goddess of Dendrophobia."
         },
         {
+          "name": "Rue'via",
+          "image": "ruevia.png",
+          "description": "Eldritch Goddess of Chiroptophobia."
+        },
+        {
+          "name": "Helkareth",
+          "image": "helkareth.png",
+          "description": "Felled Deity of Necrophobia."
+        },
+        {
           "name": "Kalyx",
           "image": "Kalyx.png",
           "description": "Eldritch Entity of Inaptimor."
