@@ -57,19 +57,59 @@ function showView(view, chan){
   }
 }
 
-chans.forEach(chan => {
-  chan.addEventListener('click', () => {
-    const id = chan.dataset.view;
+
+function getViewFromHash() {
+    const id = decodeURIComponent(window.location.hash.slice(1));
     const view = document.getElementById(id);
+
+    // Only allow hashes that match an actual content view.
+    return view && view.classList.contains('view')
+        ? view
+        : document.getElementById('about');
+}
+
+function setViewFromHash(animate = true) {
+    const view = getViewFromHash();
     if (!view) return;
-    showView(view, chan);
-  });
+
+    const chan = document.querySelector(
+        `.chan[data-view="${view.id}"]`
+    );
+
+    if (animate) {
+        showView(view, chan);
+    } else {
+        // Set the initial view immediately, without an animation.
+        views.forEach(v => {
+            const active = v === view;
+            v.hidden = !active;
+            v.classList.toggle('active', active);
+        });
+
+        chans.forEach(c => {
+            c.classList.toggle('active', c === chan);
+        });
+    }
+}
+
+chans.forEach(chan => {
+    chan.addEventListener('click', () => {
+        const id = chan.dataset.view;
+
+        if (window.location.hash === `#${id}`) {
+            setViewFromHash();
+        } else {
+            window.location.hash = id;
+        }
+    });
 });
 
-(function(){
-  const initial = document.querySelector('.view:not([hidden])') || document.getElementById('about');
-  if (initial){ initial.hidden = false; initial.classList.add('active'); }
-})();
+window.addEventListener('hashchange', () => {
+    setViewFromHash();
+});
+
+setViewFromHash(false);
+
 
 /* -------- Blog formatting helpers -------- */
 function escapeHTML(str){
